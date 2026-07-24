@@ -126,9 +126,6 @@ for i = 1:rule
     L{i} = L0 + L1{i};    % Pi
 end
 
-%%% line integral constraint
-constraints = [constraints, diag(L0) == 0 ];
-
 
 v = cell(1,10);
 for i=1:10
@@ -251,7 +248,8 @@ constraints = [
         R32 >= epsilon * eye(n);
                   ];
 
-
+%%% line integral constraint
+constraints = [constraints, diag(L0) == 0 ];
 
 for i = 1 : rule
     constraints = [constraints, LMIcon1{i}<= -epsilon*eye(10*n), 
